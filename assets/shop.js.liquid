@@ -1,0 +1,15 @@
+$( document ).ready( function() {
+    var navigation = $( "nav" ),
+        body = $( "body" );
+    navigation.hide();
+
+    $( ".open_navigation" ).click( function() {
+        navigation.show();
+        body.css( "overflow", "hidden" );
+    });
+
+    $( ".close_navigation" ).click( function() {
+        navigation.hide();
+        body.css( "overflow", "auto" );
+    });
+});

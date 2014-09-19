@@ -22,6 +22,11 @@
 
     <link rel="canonical" href="{{ canonical_url }}" />
     <meta name="viewport" content="width=device-width" />  
+
+    <link href='//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     {{ content_for_header }}
     {{ 'style.css' | asset_url | stylesheet_tag }}
     {{ '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js' | script_tag }}
@@ -30,26 +35,54 @@
 <body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
     
     <header>
+        <!--
         <div>
             <a href="/cart">{{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})</a>
             <a href="/cart">Check out</a>
         </div>
-        
-        <div id="shop_name">
-            <h1><a href="/">{{ shop.name }}</a></h1>
+        --> 
+
+        <div id="shop_name_container" class="medium">
+            <div id="shop_name_main" class="caps open_navigation">
+                {{ shop.name }} 
+            </div>
+            <div id="shop_cart" class="caps">
+                CART [{{cart.item_count }}]
+            </div>
         </div>
-        
-        <nav>
-            <ul>
-                {% for link in linklists.main-menu.links %}
-                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                {% endfor %}
-            </ul>
-        </nav>
     </header>
+
+    <nav>
+        <div class="content">
+
+            <br><br>
+            <div class="navigation_header">
+                <div><a class="black_font" href="/">home</a></div>
+                <div class="close_navigation">close</div>
+            </div>
+            <br><br>
+
+            {% for link in linklists.main-menu.links %}
+                <a class="black_font caps medium" href="{{ link.url }}">
+                    {{ link.title | upcase }}
+                </a><br>
+            {% endfor %}
+        </div>
+    </nav>
+
+    <footer>
+        <div class="social_button_container">
+            <div class="social_button"><i class="medium fa fa-facebook"></i></div>
+            <div class="social_button"><i class="medium fa fa-instagram"></i></div>
+            <div class="social_button"><i class="medium fa fa-pinterest"></i></div>
+            <div class="social_button"><i class="medium fa fa-tumblr"></i></div>
+            <div class="social_button"><i class="medium fa fa-twitter"></i></div>
+        </div>
+    </footer>
 
     {{ content_for_layout }}
     
+    {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
     {{ 'shop.js'  | asset_url | script_tag }}
 </body>
 
