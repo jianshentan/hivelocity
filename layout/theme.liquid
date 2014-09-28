@@ -42,34 +42,46 @@
         </div>
         --> 
 
-        <div id="shop_name_container" class="medium">
-            <div id="shop_name_main" class="caps open_navigation">
-                {{ shop.name }} 
-            </div>
-            <div id="shop_cart" class="caps">
-                CART [{{cart.item_count }}]
+        <div class="content">
+            <div class="small">
+                <div id="product" class="caps open_navigation">
+                    PRODUCTS     
+                </div>
+                <div id="cart" class="caps open_cart">
+                    CART [{{cart.item_count }}]
+                </div>
             </div>
         </div>
     </header>
 
     <nav>
         <div class="content">
-
-            <br><br>
             <div class="navigation_header">
-                <div><a class="black_font" href="/">home</a></div>
-                <div class="close_navigation">close</div>
+                <div><a class="black_font" href="/">HOME</a></div>
+                <div class="navigation_options">
+                    <span class="product_navigation">PRODUCTS</span> | 
+                    <span class="cart_navigation">CART</span> |
+                    <span class="close_navigation">CLOSE</span>
+                </div>
             </div>
             <br><br>
 
-            {% for link in linklists.main-menu.links %}
-                <a class="black_font caps medium" href="{{ link.url }}">
-                    {{ link.title | upcase }}
-                </a><br>
-            {% endfor %}
+            <div class="products">
+                {% for link in linklists.main-menu.links %}
+                    <a class="black_font caps medium" href="{{ link.url }}">
+                        {{ link.title | upcase }}
+                    </a><br>
+                {% endfor %}
+            </div>
+
+            <div class="cart">
+                {% include "cart" %}
+            </div>
+
         </div>
     </nav>
 
+    <!--
     <footer>
         <div class="social_button_container">
             <div class="social_button"><i class="medium fa fa-facebook"></i></div>
@@ -79,6 +91,7 @@
             <div class="social_button"><i class="medium fa fa-twitter"></i></div>
         </div>
     </footer>
+    -->
 
     {{ content_for_layout }}
     

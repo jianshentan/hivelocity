@@ -2,19 +2,20 @@
 {{ page.content }}
 {% assign collection = collections.frontpage %}
 
-{% include "splash" %}
+<div class="splash">
+    <div class="hi_velocity large">HI VELOCITY</div>
+</div>
 
 <div class="content">
 {% for product in collection.products %}
 
     {% case product.url %}
-    {% when contains "SCOTT" %}
+    {% when product.url contains "SCOTT" %}
         You have scott's shirt!
     {% else %}
         <h2><a href="{{ product.url }}">{{ product.title }}</a></h2>
         {{ product.description }}
         <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
-
     {% endcase %}
     
     <br><br>
