@@ -6,20 +6,11 @@ $( document ).ready( function() {
     navigation.hide();
 
     $( ".open_navigation" ).click( function() {
-        openNavigation( navigationState.PRODUCT );
+        openNavigation();
         navigation.show();
         body.css( "overflow", "hidden" );
     });
 
-    $( ".open_cart" ).click( function() {
-        openNavigation( navigationState.CART );
-        navigation.show();
-        body.css( "overflow", "hidden" );
-    });
-
-
-    cart();
-    
     // Routing
     var s = document.URL.split("/");
     var url = s[s.length-1];
@@ -36,54 +27,17 @@ $( document ).ready( function() {
                     header.addClass( "home" );
                 }
             });
+        case "cart":
+            cart();
             break;
     }
 });
 
-var navigationState = {
-    PRODUCT: 0,
-    CART: 1
-}
-var openNavigation = function( state ) {
+var openNavigation = function() {
 
-    var productNavigation = $( ".product_navigation" ),
-        cartNavigation = $( ".cart_navigation" ),
-        products = $( ".products" ),
-        cart = $( ".cart" );
-
-    function removeUnderlines() {
-        cartNavigation.removeClass( "underline" );
-        productNavigation.removeClass( "underline" );
-    }
-
-    function hideAll() {
-        cart.addClass( "hide" );
-        products.addClass( "hide" );
-    }
-
-    hideAll();
-    removeUnderlines();
-
-    if( state === navigationState.PRODUCT ) {
-        productNavigation.addClass( "underline" );
-        products.removeClass( "hide" );
-    } else if ( state === navigationState.CART ) {
-        cartNavigation.addClass( "underline" );
-        cart.removeClass( "hide" );
-    }
-
-    cartNavigation.click( function() {
-        removeUnderlines();
-        hideAll();
-        cartNavigation.addClass( "underline" );
-        cart.removeClass( "hide" );
-    });
-
+    var productNavigation = $( ".product_navigation" );
     productNavigation.click( function() {
-        removeUnderlines();
-        hideAll();
         productNavigation.addClass( "underline" );
-        products.removeClass( "hide" );
     });
 
     $( ".close_navigation" ).click( function() {

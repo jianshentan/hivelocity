@@ -33,36 +33,20 @@
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
-    
-    <header>
-        <!--
-        <div>
-            <a href="/cart">{{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})</a>
-            <a href="/cart">Check out</a>
-        </div>
-        --> 
-
-        <div class="content">
-            <div class="small">
-                <div id="product" class="caps open_navigation">
-                    PRODUCTS     
-                </div>
-                <div id="cart" class="caps open_cart">
-                    CART [{{cart.item_count }}]
-                </div>
-            </div>
-        </div>
-    </header>
 
     <nav>
         <div class="content">
+
             <div class="navigation_header">
-                <div><a class="close_navigation">BACK</a></div>
+                <div><a href="/">HOME</a></div>
                 <div class="navigation_options">
-                    <span class="product_navigation">PRODUCTS</span> | 
-                    <span class="cart_navigation">CART [{{cart.item_count}}]</span> 
+                    <span class="product_navigation underline">PRODUCTS</span> | 
+                    <span class="cart_navigation">
+                        <a href="/cart">CART [{{cart.item_count}}]</a>
+                    </span> 
                 </div>
             </div>
+
             <br><br>
 
             <div class="products">
@@ -71,10 +55,6 @@
                         {{ link.title | upcase }}
                     </a><br>
                 {% endfor %}
-            </div>
-
-            <div class="cart">
-                {% include "cart" %}
             </div>
 
         </div>

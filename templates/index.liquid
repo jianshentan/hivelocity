@@ -2,19 +2,21 @@
 {{ page.content }}
 {% assign collection = collections.frontpage %}
 
+{% include "navigation_main" %}
+
 <div class="splash">
     <div class="hi_velocity large">HI VELOCITY</div>
 </div>
 
 <div class="content">
-{% for product in collection.products %}
+    {% for product in collection.products %}
 
-    <h2><a href="{{ product.url }}">{{ product.title }}</a></h2>
-    {{ product.description }}
-    <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
-    <br><br>
+        <h2><a href="{{ product.url }}">{{ product.title }}</a></h2>
+        {{ product.description }}
+        <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
+        <br><br>
 
-{% else %}
-    <p>You have no products in your Frontpage collection. <a href="http://www.shopify.com/admin/custom_collections">Add some.</a></p>
-{% endfor %}
+    {% else %}
+        <p>You have no products in your Frontpage collection. <a href="http://www.shopify.com/admin/custom_collections">Add some.</a></p>
+    {% endfor %}
 </div>
