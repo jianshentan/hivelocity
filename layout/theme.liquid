@@ -57,11 +57,10 @@
     <nav>
         <div class="content">
             <div class="navigation_header">
-                <div><a class="black_font" href="/">HOME</a></div>
+                <div><a class="close_navigation">BACK</a></div>
                 <div class="navigation_options">
                     <span class="product_navigation">PRODUCTS</span> | 
-                    <span class="cart_navigation">CART</span> |
-                    <span class="close_navigation">CLOSE</span>
+                    <span class="cart_navigation">CART [{{cart.item_count}}]</span> 
                 </div>
             </div>
             <br><br>
@@ -80,18 +79,6 @@
 
         </div>
     </nav>
-
-    <!--
-    <footer>
-        <div class="social_button_container">
-            <div class="social_button"><i class="medium fa fa-facebook"></i></div>
-            <div class="social_button"><i class="medium fa fa-instagram"></i></div>
-            <div class="social_button"><i class="medium fa fa-pinterest"></i></div>
-            <div class="social_button"><i class="medium fa fa-tumblr"></i></div>
-            <div class="social_button"><i class="medium fa fa-twitter"></i></div>
-        </div>
-    </footer>
-    -->
 
     {{ content_for_layout }}
     

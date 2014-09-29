@@ -1,4 +1,6 @@
 $( document ).ready( function() {
+
+    // Navigation 
     var navigation = $( "nav" ),
         body = $( "body" );
     navigation.hide();
@@ -15,12 +17,27 @@ $( document ).ready( function() {
         body.css( "overflow", "hidden" );
     });
 
-    $( ".close_navigation" ).click( function() {
-        navigation.hide();
-        body.css( "overflow", "auto" );
-    });
 
     cart();
+    
+    // Routing
+    var s = document.URL.split("/");
+    var url = s[s.length-1];
+    switch (url) {
+        case "/":
+        case "":
+            var header = $( "header" );
+            header.addClass( "home" );
+
+            $( window ).scroll( function() {
+                if( $( this ).scrollTop() > 650 ) {
+                    header.removeClass( "home" );
+                } else {
+                    header.addClass( "home" );
+                }
+            });
+            break;
+    }
 });
 
 var navigationState = {
@@ -28,6 +45,7 @@ var navigationState = {
     CART: 1
 }
 var openNavigation = function( state ) {
+
     var productNavigation = $( ".product_navigation" ),
         cartNavigation = $( ".cart_navigation" ),
         products = $( ".products" ),
@@ -44,6 +62,7 @@ var openNavigation = function( state ) {
     }
 
     hideAll();
+    removeUnderlines();
 
     if( state === navigationState.PRODUCT ) {
         productNavigation.addClass( "underline" );
@@ -66,20 +85,36 @@ var openNavigation = function( state ) {
         productNavigation.addClass( "underline" );
         products.removeClass( "hide" );
     });
+
+    $( ".close_navigation" ).click( function() {
+        $( "nav" ).hide();
+        $( "body" ).css( "overflow", "auto" );
+    });
 };
 
 var cart = function() {
-    $( "form.cart .remove" ).each( function() {
+    var cartContainer = $( "form.cart" );
+    cartContainer.find( ".remove" ).each( function() {
+
         var removeButton = $( this );
         removeButton.click( function( e ) {
 
-            var $target = $( e.target );
-            var id = $target.attr( "data-id" );
+            var cartItem= $( e.target ).parent(),
+                id = cartItem.attr( "data-id" ),
+                qty = cartItem.attr( "data-quantity" );
 
-            $.get( "/cart/change/" + id + "?quantity=0", 
-                    function() {
-                $target.parents( "#cart-item-"+id ).remove();
+            $.get( "/cart/change/" + id + "?quantity=0", function() {
+
+                $.when( cartItem.remove() )
+                .then( function() {
+                    if( $( "#cart" ).find( ".cart-item" ).length === 0 ) {
+                        alert( "HERE" );
+                        $( "#cart_wrapper" ).html( "CART IS EMPTY" );
+                    }
+                });
+
             });
         });
+
     });
 };
