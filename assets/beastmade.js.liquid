@@ -1,0 +1,16 @@
+var beastmade = function() {
+    console.log( "in beastmade" );
+
+    // css color scheme
+    $( "header" ).css( { 
+        "background-color": "#fcd806",
+        "color": "white"
+    });
+    $( "body" ).css( "background-color", "#fcd806" );
+
+    // css hack - action button (BUY NOW, VISIT, etc)
+    $( ".beastmade_product_action" ).each( function() {
+        var h = $( this ).parent().siblings( "img" ).height();
+        $( this ).parent().css( "height", h );
+    });
+};

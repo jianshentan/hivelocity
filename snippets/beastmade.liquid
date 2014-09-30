@@ -1,0 +1,59 @@
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+{{ 'beastmade.css' | asset_url | stylesheet_tag }}
+
+<div class="beastmade">
+
+    <div class="beastmade_logo">
+        BEASTMADE
+    </div>
+
+    <br>
+
+    <div class="content">
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/129591883&amp;color=ff0000&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+    </div>
+     
+    <br>
+
+    <div class="content">
+        <iframe id="ytplayer" width="100%" height="600px" src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&color=white&controls=0&iv_load_policy=3&rel=0&showinfo=0&theme=light&origin=http://example.com" frameborder="0"></iframe>
+    </div>
+
+    <br>
+
+    <div class="beastmade_description uppercase content">
+        {{ collection.description }}
+    </div>
+
+    <br>
+
+    {% for product in collection.products %}
+    {% if product.title == "Monster" %}
+    <div class="wide_content beastmade_product_container">
+        <div class="content">
+            <img class="beastmade_product_image" src="{{product.featured_image | product_img_url: 'grande' }}" />
+            <div class="beastmade_product_info">
+                <div class="beastmade_product_title">
+                    {{ product.title }}
+                </div>
+                <div class="beastmade_product_price">
+                    USD {{ product.price }}
+                </div>
+                <div class="beastmade_product_description">
+                    {{ product.description }}
+                </div>
+                <div class="beastmade_product_action">
+                    BUY NOW
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    <br>
+    <br>
+
+</div>
+
+{{ 'beastmade.js' | asset_url | script_tag }}

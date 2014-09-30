@@ -1,0 +1,6 @@
+{% include "navigation_main" %}
+<main>
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.published_at | date: '%d %B %Y' }}</p>
+    {{ article.content }}
+</main>

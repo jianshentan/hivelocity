@@ -1,0 +1,55 @@
+<div class="content">
+    <div class="navigation_header">
+        <div><a href="/" class="black_font">HOME</a></div>
+        <div class="navigation_options">
+            <span class="product_navigation open_navigation">PRODUCTS</span> | 
+            <span class="cart_navigation underline">
+                <a href="/cart" class="black_font">CART [{{cart.item_count}}]</a>
+            </span> 
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="content" >
+        <div id="cart_wrapper">
+
+            {% if cart.item_count > 0 %}
+            <form action="/cart" method="post" id="cart" class="cart extra-small">
+                <table>
+                    <tr>
+                        <th class="item header_desc"></th>
+                        <th class="item header_price">Price</th>
+                        <th class="item header_qty">Quantity</th>
+                        <th class="item header_remove">Delete</th>
+                        <th class="item header_total">Total</th>
+                    </tr>
+                    {% for item in cart.items %}
+                    <tr id="cart-item-{{item.variant.id}}" class="cart-item" data-quantity="{{ item.quantity }}"  data-id="{{item.variant.id}}">
+                        <td class="item desc"><a href="/collections/{{ item.product.collections.first.title | downcase }}#{{ item.product.handle }}">{{ item.title }}</a></td>
+                        <td class="item price">{{ item.price | money }}</td>
+                        <td class="item qty">
+                            <input type="text" size="4" pattern="[0-9]*" name="updates[{{item.variant.id}}]" id="quantity-{{ item.variant.id }}" class="quantity" value="{{ item.quantity }}" min="1" onfocus="this.select();"/>
+                        </td>
+                        <td class="item remove">Remove</td>
+                        <td class="item price">{{ item.line_price | money }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr class="subtotal">
+                        <td colspan="5">Total: <strong>{{ cart.total_price | money }}</strong></td>
+                    </tr>
+                    <tr class="actions">
+                        <td colspan="5">
+                            <input class="button" type="submit" id="update-cart" name="update" value="Update"  />
+                            <input class="button" type="submit" name="checkout" value="Checkout" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            {% else %}
+            <p>It appears that your cart is currently empty!</p>
+            {% endif %}
+
+        </div>
+    </div>
+</main>

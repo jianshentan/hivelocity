@@ -1,0 +1,169 @@
+/* ============= GLOBAL ============== */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 2.0em;
+    margin: 0px;
+    min-width: 1028px;
+}
+
+a:-webkit-any-link {
+    text-decoration: none !important;
+}
+
+a:-webkit-any-link.white_font {
+    color: white;
+}
+
+a:-webkit-any-link.black_font {
+    color: black;
+}
+
+main {
+    padding-top: 46px;
+}
+
+.caps {
+    font-family: 'Ubuntu', sans-serif;
+}
+.large {
+    font-size: 3.0em;
+}
+.medium {
+    font-size: 2.0em;
+}
+.small {
+    font-size: 1.0em;
+}
+.extra-small {
+    font-size: 0.75em;
+}
+
+.content {
+    width: 1028px;
+    margin: 0 auto;
+}
+
+.wide_content {
+    width: 100%;
+}
+
+.hide {
+    display: none;
+}
+
+/* ============= NAV ============== */
+
+nav {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    background-color: white;
+    color: black;
+    width: 100%; height: 100%;
+    z-index: 1000;
+    min-width: 960px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.navigation_header > div {
+    display: inline-block;
+}
+
+.navigation_options {
+    float: right;
+}
+
+.close_navigation, 
+.navigation_options > span {
+    cursor: pointer;
+}
+
+.underline {
+    border-bottom: 4px solid;
+}
+
+/* ============= FOOTER ============== */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    min-width: 960px;
+}
+
+.social_button_container {
+    height: 100px;
+}
+
+.social_button {
+    display: inline-block;
+    margin: 0 30px;
+    background-color: rgba(255,255,255,0.5);
+    padding: 10px;
+    width: 60px; height: 60px;
+}
+
+/* ============= MAIN ============== */
+
+header {
+    z-index: 500;
+    background-color: black;
+    color: white;
+    position: fixed;
+    width: 100%;
+    height: 46px;
+}
+
+header #product,
+header #cart {
+    display: inline-block; 
+    cursor: pointer;
+    padding-top: 5px;
+}
+
+header #cart {
+    float: right;
+}
+header #product {
+    vertical-align: top;
+}
+
+header.home {
+    margin-top: 650px;
+    position: absolute;
+}
+
+/* ============= SPLASH ============== */
+
+.splash {
+    width: 100%;
+    height: 700px;
+    background-color: black;
+}
+
+.hi_velocity {
+    color: white;
+    padding-top: 260px;
+    text-align: center;
+    z-index: 501;
+}
+
+/* ============= CART ============== */
+form.cart table {
+    width: 100%;
+}
+
+form.cart .total,
+form.cart .price {
+    text-align: right;
+}
+
+form.cart .remove {
+    text-decoration: underline;
+}
+
+/* ============= HOME ============== */
+
+

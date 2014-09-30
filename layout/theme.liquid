@@ -1,0 +1,71 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->  
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    {% if template == 'index' %}
+    <title>{{ shop.name }} | {{ page_title }}</title>
+    {% elsif template == '404' %}
+    <title>Page Not Found | {{ shop.name }}</title>
+    {% else %}
+    <title>{{ page_title }} | {{ shop.name }}</title>
+    {% endif %}
+
+    {% if page_description %}
+    <meta name="description" content="{{ page_description }}" />
+    {% endif %}
+
+    <link rel="canonical" href="{{ canonical_url }}" />
+    <meta name="viewport" content="width=device-width" />  
+
+    <link href='//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    {{ content_for_header }}
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js' | script_tag }}
+</head>
+
+<body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+
+    <nav>
+        <div class="content">
+
+            <div class="navigation_header">
+                <div><a href="/" class="black_font">HOME</a></div>
+                <div class="navigation_options">
+                    <span class="product_navigation underline">PRODUCTS</span> | 
+                    <span class="cart_navigation">
+                        <a href="/cart" class="black_font">CART [{{cart.item_count}}]</a>
+                    </span> 
+                </div>
+            </div>
+
+            <br><br>
+
+            <div class="products">
+                {% for link in linklists.main-menu.links %}
+                    <a class="black_font caps medium" href="{{ link.url }}">
+                        {{ link.title | upcase }}
+                    </a><br>
+                {% endfor %}
+            </div>
+
+        </div>
+    </nav>
+
+    {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+
+    {{ content_for_layout }}
+
+    {{ 'shop.js'  | asset_url | script_tag }}
+
+</body>
+
+</html>
