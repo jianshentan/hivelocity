@@ -7,53 +7,115 @@
         BEASTMADE
     </div>
 
-    <br>
-
     <div class="content">
         <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/129591883&amp;color=ff0000&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
     </div>
      
-    <br>
-
     <div class="content">
         <iframe id="ytplayer" width="100%" height="600px" src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&color=white&controls=0&iv_load_policy=3&rel=0&showinfo=0&theme=light&origin=http://example.com" frameborder="0"></iframe>
     </div>
 
-    <br>
-
     <div class="beastmade_description uppercase content">
         {{ collection.description }}
     </div>
-
     <br>
 
     {% for product in collection.products %}
-    {% if product.title == "Monster" %}
+    
+    {% if product.handle == "monster" %}
     <div class="wide_content beastmade_product_container">
         <div class="content">
             <img class="beastmade_product_image" src="{{product.featured_image | product_img_url: 'grande' }}" />
-            <div class="beastmade_product_info">
+            <div class="beastmade_product_info" data-handle="{{ product.handle }}">
                 <div class="beastmade_product_title">
                     {{ product.title }}
                 </div>
                 <div class="beastmade_product_price">
-                    USD {{ product.price }}
+                    USD <span class="priceInCents">{{ product.price }}</span>
                 </div>
                 <div class="beastmade_product_description">
                     {{ product.description }}
                 </div>
-                <div class="beastmade_product_action">
-                    BUY NOW
+                <div class="beastmade_product_action" data-type="buyable">
+                    ADD TO CART 
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="beastmade_slogan">
+            ENTER THE JUDGEMENT ZONE
+        </div>
+    </div>
+    {% endif %}
+
+    {% if product.handle == "beast-stool" %}
+    <div class="wide_content beastmade_product_container">
+        <div class="content">
+            <img class="beastmade_product_image" src="{{product.featured_image | product_img_url: 'grande' }}" />
+            <div class="beastmade_product_info" data-handle="{{ product.handle }}">
+                <div class="beastmade_product_title">
+                    {{ product.title }}
+                </div>
+                <div class="beastmade_product_price">
+                    USD <span class="priceInCents">{{ product.price }}</span>
+                </div>
+                <div class="beastmade_product_description">
+                    {{ product.description }}
+                </div>
+                <div class="beastmade_product_action" data-type="buyable">
+                    ADD TO CART 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="beastmade_slogan">
+            ENTER THE JUDGEMENT ZONE
+        </div>
+    </div>
+    {% endif %}
+
+    {% if product.handle == "beast-extreme" %}
+    <div class="wide_content beastmade_product_container">
+        <div class="content">
+            <img class="beastmade_product_image" src="{{product.featured_image | product_img_url: 'grande' }}" />
+            <div class="beastmade_product_info" data-handle="{{ product.handle }}">
+                <div class="beastmade_product_title">
+                    {{ product.title }}
+                </div>
+                <div class="beastmade_product_price">
+                    USD <span class="priceInCents">{{ product.price }}</span>
+                </div>
+                <div class="beastmade_product_description">
+                    {{ product.description }}
+                </div>
+                <div class="beastmade_product_action" data-type="buyable">
+                    ADD TO CART 
                 </div>
             </div>
         </div>
     </div>
     {% endif %}
+
     {% endfor %}
 
+    <br> 
+
+    <div class="content capitalize">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div>
+
+    <div class="beastmade_date">
+        2014
+    </div>
+
     <br>
-    <br>
+
 
 </div>
 
 {{ 'beastmade.js' | asset_url | script_tag }}
+

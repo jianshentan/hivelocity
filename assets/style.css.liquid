@@ -21,7 +21,7 @@ a:-webkit-any-link.black_font {
 }
 
 main {
-    padding-top: 46px;
+    padding-top: 50px;
 }
 
 .caps {
@@ -53,6 +53,20 @@ main {
     display: none;
 }
 
+.underline_small {
+    border-bottom: 4px solid;
+}
+
+.underline_large {
+    border-bottom: 8px solid;
+}
+
+.capitalize {
+    text-transform: uppercase;
+}
+
+
+
 /* ============= NAV ============== */
 
 nav {
@@ -78,10 +92,6 @@ nav {
 .close_navigation, 
 .navigation_options > span {
     cursor: pointer;
-}
-
-.underline {
-    border-bottom: 4px solid;
 }
 
 /* ============= FOOTER ============== */
@@ -113,7 +123,7 @@ header {
     color: white;
     position: fixed;
     width: 100%;
-    height: 46px;
+    height: 50px;
 }
 
 header #product,
@@ -131,7 +141,6 @@ header #product {
 }
 
 header.home {
-    margin-top: 650px;
     position: absolute;
 }
 
@@ -162,6 +171,15 @@ form.cart .price {
 
 form.cart .remove {
     text-decoration: underline;
+}
+
+form.cart .price,
+form.cart .header_price,
+form.cart .qty,
+form.cart .header_qty,
+form.cart .remove, 
+form.cart .header_remove {
+    text-align: right;
 }
 
 /* ============= HOME ============== */

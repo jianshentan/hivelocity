@@ -1,16 +1,47 @@
 var beastmade = function() {
-    console.log( "in beastmade" );
-
     // css color scheme
     $( "header" ).css( { 
         "background-color": "#fcd806",
         "color": "white"
     });
     $( "body" ).css( "background-color", "#fcd806" );
-
+    $( CART_COUNTER ).trigger( "color", [ "red" ] ); // not working...
+    
     // css hack - action button (BUY NOW, VISIT, etc)
     $( ".beastmade_product_action" ).each( function() {
-        var h = $( this ).parent().siblings( "img" ).height();
-        $( this ).parent().css( "height", h );
+        var productInfo = $( this ).parent(),
+            productHandle = productInfo.attr( "data-handle" );
+
+        var h = productInfo.siblings( "img" ).height();
+        productInfo.css( "height", h );
+
+        if( $( this ).attr( "data-type" ) == "buyable" ) {
+            $( this ).on( 'click', function() {
+                var that = $( this );
+                that.off( 'click' );
+
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    url: '/products/'+productHandle+'.js', 
+                    async: false
+                })
+                .done( function( data ) {
+                    var other = that;
+                    $.ajax('/cart/add.js', {
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            quantity: 1,
+                            id: data.variants[0].id
+                        }
+                    })
+                    .done( function( data ) {
+                        other.html( "THANK YOU!" );
+                        $( CART_COUNTER ).trigger( "increment", [ 1, "red" ] );
+                    });
+                });
+            });
+        }
     });
 };

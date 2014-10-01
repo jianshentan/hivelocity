@@ -3,8 +3,10 @@
         <div><a href="/" class="black_font">HOME</a></div>
         <div class="navigation_options">
             <span class="product_navigation open_navigation">PRODUCTS</span> | 
-            <span class="cart_navigation underline">
-                <a href="/cart" class="black_font">CART [{{cart.item_count}}]</a>
+            <span class="cart_navigation underline_small">
+                <a href="/cart" class="black_font">
+                    CART [<span class="cart_counter">{{cart.item_count}}</span>]
+                </a>
             </span> 
         </div>
     </div>
@@ -22,7 +24,7 @@
                         <th class="item header_price">Price</th>
                         <th class="item header_qty">Quantity</th>
                         <th class="item header_remove">Delete</th>
-                        <th class="item header_total">Total</th>
+                        <th class="item header_price">Total</th>
                     </tr>
                     {% for item in cart.items %}
                     <tr id="cart-item-{{item.variant.id}}" class="cart-item" data-quantity="{{ item.quantity }}"  data-id="{{item.variant.id}}">
