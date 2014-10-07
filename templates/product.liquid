@@ -1,6 +1,9 @@
 {% include "navigation_main" %}
 <main>
-    {% if product.title == "EAT" %}
+    {% case product.handle %}
+    {% when "monster" %} 
+        {% include "beastmade" %}
+    {% when "eat-steak" %}
         {% include "eat" %}
     {% else %}
         <h2>{{ product.title }}</h2>
@@ -17,5 +20,5 @@
             </select>
             <input type="submit" name="add" id="add" value="Add to Cart" class="button">
         </form>
-   {% endif %}
+    {% endcase %}
 </main>

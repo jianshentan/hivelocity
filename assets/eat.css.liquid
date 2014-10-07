@@ -1,0 +1,107 @@
+#cart > a:visited {
+    color: #15aed1;
+}
+
+.eat {
+    color: white;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.8em;
+}
+
+.eat .left_content,
+.eat .right_content {
+    display: inline-block;
+}
+
+.eat .right_content {
+    width: 400px;
+    float: right;
+    text-align: center;
+    height: 100%;
+}
+
+.eat .left_content {
+    width: 480px;
+    position: relative;
+    padding: 60px;
+    height: 560px;
+}
+
+.eat .title {
+    font-size: 1.8em;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+}
+
+.eat .action_container {
+    position: absolute;
+    left: 60px;
+    bottom: 60px;
+}
+
+.eat .action_container > input {
+    height: 60px;
+    border: 5px solid white;
+    width: 60px;
+    background-color: rgba(0,0,0,0);
+    color: white;
+    font-size: 2.0em;
+    text-align: center;
+    font-family: 'PT Sans', sans-serif;
+    text-align: center;
+    display: inline-block;
+}
+
+.eat .action_container > input:focus {
+    outline: none;
+}
+
+.eat .action_container > input::-webkit-outer-spin-button,
+.eat .action_container > input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.eat .action {
+    background-color: white;
+    width: 300px;
+    display: inline-block;
+    height: 72px;
+    margin-left: 20px;
+    vertical-align: top;
+    float: right;
+    text-align: center;
+    font-size: 1.6em;
+    line-height: 72px;
+    font-weight: 700;
+}
+
+.eat .eat_product_images {
+    margin-top: 40px;
+}
+
+
+.steak_background {
+    background-image: url( '{{ 'eat_steak-background.jpg' | asset_url | image_tag }}' );
+    background-repeat: repeat-x;
+    height: 680px;
+    width: 100%;
+}
+
+.steak_content {
+    background-color: #15aed1;
+    height: 100%;
+}
+
+.steak_content > .left_content {
+    background-color: #15aed1;
+}
+
+.steak_content > .right_content {
+    background-color: #06dcff;
+}
+
+.steak_content .action {
+    color: #15aed1;
+}

@@ -1,0 +1,19 @@
+var eat = function() {
+    // css color scheme
+    var header = $( "header" );
+    header.find( ".white_font" ).removeClass( "white_font" );
+    header.css({
+        "background-color": "white",
+        "color": "#15aed1"
+    });
+    $( "body" ).css( "background-color", "whity" );
+    $( CART_COUNTER ).trigger( "color", [ "red" ] ); // not working...
+
+    
+    // prevent non-numeric input 
+    $( ".eat input[type=number]" ).keypress( function(e) {
+        if (e.which < 48 || e.which > 57) {
+            e.preventDefault();
+        }
+    });
+};

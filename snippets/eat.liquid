@@ -1,1 +1,40 @@
-SNIPPIT OF EAT
+<link href='//fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Oswald:700,400' rel='stylesheet' type='text/css'>
+
+{{ 'eat.css' | asset_url | stylesheet_tag }}
+
+<div class="eat">
+
+    
+    {% for product in collection.products %}
+
+    {% if product.handle == "eat-steak" %}
+
+    <div class="wide_content steak_background">
+        <div class="content steak_content">
+            <div class="left_content">
+                <img src="{{ 'eat_logo.jpg' | asset_url | image_tag }}" width="300px" height="100px" />
+                <div class="title">TRIPLE STEAK</div>
+                <div class="description">{{ product.description }}</div>
+                <div class="action_container">
+                    <input type="number" min="1" value="1">
+                    <div class="action"> ADD TO CART </div>
+                </div>
+            </div>
+            <div class="right_content">
+                <img class="eat_product_images" src="{{ product.featured_image | product_img_url: 'grande' }}">
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+    {% if product.handle == "eat-broccoli" %}
+    {% endif %}
+
+    {% endfor %}
+
+</div>
+
+{{ 'eat.js' | asset_url | script_tag }}
+
